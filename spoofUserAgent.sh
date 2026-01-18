@@ -32,3 +32,8 @@ random_index=$[$RANDOM % ${#userAgents[@]}]
 echo "Use this user-agent" 
 oneTimeUserAgent=$userAgents[$random_index]
 echo $oneTimeUserAgent
+
+#Getting the URL from user input
+read -p "Please provide a URL: " url
+
+wget $url --deader "User-Agent: $oneTimeUserAgent" -O- -q 
