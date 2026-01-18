@@ -29,11 +29,11 @@ Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/1
 EOF
 
 random_index=$[$RANDOM % ${#userAgents[@]}]
-echo "Use this user-agent" 
+echo "Using this user-agent" 
 oneTimeUserAgent=$userAgents[$random_index]
-echo $oneTimeUserAgent
+echo ">>$oneTimeUserAgent"
 
 #Getting the URL from user input
 read -p "Please provide a URL: " url
-
-wget $url --deader "User-Agent: $oneTimeUserAgent" -O- -q 
+read -p "Please provide the filename: " filename
+wget $url --header "User-Agent: $oneTimeUserAgent" -O $filename -nv
